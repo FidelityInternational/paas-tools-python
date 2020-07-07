@@ -1,6 +1,6 @@
 FROM python:3.8-buster
-ENV CF_CLI_VERSION="6.49.0"
-ENV YQ_VERSION="3.1.2"
+ENV CF_CLI_VERSION="6.51.0"
+ENV YQ_VERSION="3.2.1"
 ENV CF_MGMT_VERSION="v1.0.43"
 ENV BOSH_VERSION="6.2.1"
 ENV PACKAGES "awscli unzip curl openssl ca-certificates git jq util-linux gzip bash uuid-runtime coreutils vim tzdata openssh-client gnupg rsync make zip"
