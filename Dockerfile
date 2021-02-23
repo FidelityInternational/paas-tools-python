@@ -14,10 +14,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends ${PACKAGES} && 
     ln /usr/bin/uuidgen /usr/local/bin/uuid && \
     cf install-plugin -r CF-Community -f "blue-green-deploy" && \
     cf install-plugin -r CF-Community -f "autopilot" && \
-    curl -L https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/2.6.2/credhub-linux-2.6.2.tgz -o credhub-linux-2.6.2.tgz && \
-    tar xvf credhub-linux-2.6.2.tgz -C /usr/local/bin/ && \
+    curl -L https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/2.9.0/credhub-linux-2.9.0.tgz -o credhub-linux-2.9.0.tgz && \
+    tar xvf credhub-linux-2.9.0.tgz -C /usr/local/bin/ && \
     chmod +x /usr/local/bin/credhub && \
-    rm credhub-linux-2.6.2.tgz && \
+    rm credhub-linux-2.9.0.tgz && \
     mkdir -p /root/.ssh && \
     git config --global user.email "git-ssh@example.com" && \
     git config --global user.name "Docker container git-ssh"
