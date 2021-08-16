@@ -15,6 +15,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends ${PACKAGES} && 
 RUN chmod +x /usr/local/bin/*
 RUN ln /usr/bin/uuidgen /usr/local/bin/uuid
 RUN mkdir -p /root/.ssh
-RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli
+RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli retrying boto3 botocore
 RUN git config --global user.email "git-ssh@example.com"
 RUN git config --global user.name "Docker container git-ssh"
