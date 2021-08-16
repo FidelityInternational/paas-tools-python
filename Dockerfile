@@ -18,3 +18,4 @@ RUN mkdir -p /root/.ssh
 RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli
 RUN git config --global user.email "git-ssh@example.com"
 RUN git config --global user.name "Docker container git-ssh"
+test
