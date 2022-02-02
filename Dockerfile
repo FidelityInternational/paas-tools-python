@@ -1,4 +1,4 @@
-FROM python:3.10-bullseye
+FROM python:3.9-buster
 ENV CF_CLI_VERSION="7.2.0"
 ENV YQ_VERSION="4.9.6"
 ENV CF_MGMT_VERSION="v1.0.43"
@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ${PACKAGES} && 
 RUN chmod +x /usr/local/bin/*
 RUN ln /usr/bin/uuidgen /usr/local/bin/uuid
 RUN mkdir -p /root/.ssh
-RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli retrying boto3 botocore
+RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli retrying boto3 botocore certbot git+https://github.com/FidelityInternational/certbot-dns-qip.git
 RUN git config --global user.email "git-ssh@example.com"
 RUN git config --global user.name "Docker container git-ssh"
