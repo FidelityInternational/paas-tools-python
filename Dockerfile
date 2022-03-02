@@ -1,4 +1,4 @@
-FROM python:3.9-buster
+FROM python:3.9-bullseye
 ENV CF_CLI_VERSION="7.2.0"
 ENV YQ_VERSION="4.9.6"
 ENV CF_MGMT_VERSION="v1.0.43"
