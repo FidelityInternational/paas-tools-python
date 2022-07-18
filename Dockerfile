@@ -2,7 +2,7 @@ FROM python:3.9-bullseye
 ENV CF_CLI_VERSION="7.4.0"
 ENV YQ_VERSION="4.9.6"
 ENV CF_MGMT_VERSION="v1.0.43"
-ENV BOSH_VERSION="6.4.4"
+ENV BOSH_VERSION="6.4.17"
 ENV CREDHUB_VERSION="2.9.3"
 ENV CERTBOT_VERSION="1.24.0"
 ENV PACKAGES "awscli unzip curl openssl ca-certificates git jq util-linux gzip bash uuid-runtime coreutils vim tzdata openssh-client gnupg rsync make zip sshfs"
