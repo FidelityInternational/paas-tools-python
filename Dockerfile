@@ -5,6 +5,7 @@ ENV CF_MGMT_VERSION="v1.0.43"
 ENV BOSH_VERSION="7.5.2"
 ENV CREDHUB_VERSION="2.9.25"
 ENV CERTBOT_VERSION="1.24.0"
+ENV ACME_VERSION="1.24.0"
 ENV PACKAGES "awscli unzip curl openssl ca-certificates git jq util-linux gzip bash uuid-runtime coreutils vim tzdata openssh-client gnupg rsync make zip sshfs"
 RUN apt-get update && apt-get install -y --no-install-recommends ${PACKAGES} && apt-get clean && rm -rf /var/lib/apt/lists/* && \
     curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=${CF_CLI_VERSION}" | tar -zx -C /usr/local/bin && \
@@ -17,6 +18,6 @@ RUN chmod +x /usr/local/bin/*
 RUN ln /usr/bin/uuidgen /usr/local/bin/uuid
 RUN mkdir -p /root/.ssh
 RUN /usr/local/bin/python -m pip install --upgrade pip
-RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli retrying boto3 botocore "certbot==${CERTBOT_VERSION}" git+https://github.com/FidelityInternational/certbot-dns-qip.git
+RUN pip install --no-cache-dir aws-adfs PyJWT pyyaml requests bs4 ruamel.yaml regex awscli retrying boto3 botocore "certbot==${CERTBOT_VERSION}" "acme==${ACME_VERSION}" git+https://github.com/FidelityInternational/certbot-dns-qip.git
 RUN git config --global user.email "git-ssh@example.com"
 RUN git config --global user.name "Docker container git-ssh"
