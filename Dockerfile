@@ -1,10 +1,11 @@
 FROM python:3.12-bullseye
-ENV CF_CLI_VERSION="8.13.0"
-ENV YQ_VERSION="4.26.1"
+ENV BOSH_VERSION="7.9.7"
+ENV CF_CLI_VERSION="8.14.1"
 ENV CF_MGMT_VERSION="v1.0.106"
-ENV BOSH_VERSION="7.9.5"
+ENV CREDHUB_VERSION="2.9.47"
 ENV GOVC_VERSION="0.48.1"
-ENV CREDHUB_VERSION="2.9.45"
+ENV MC_VERSION="RELEASE.2025-05-21T01-59-54Z"
+ENV YQ_VERSION="4.26.1"
 ENV PACKAGES "awscli unzip curl openssl ca-certificates git jq util-linux gzip bash uuid-runtime coreutils vim tzdata openssh-client gnupg rsync make zip sshfs"
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends ${PACKAGES} && apt-get clean && rm -rf /var/lib/apt/lists/* && \
     curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=${CF_CLI_VERSION}" | tar -zx -C /usr/local/bin && \
@@ -13,7 +14,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-reco
     curl -L "https://github.com/vmware-tanzu-labs/cf-mgmt/releases/download/${CF_MGMT_VERSION}/cf-mgmt-config-linux" -o /usr/local/bin/cf-mgmt-config && \
     curl -L "https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64" -o /usr/local/bin/bosh && \
     curl -L "https://github.com/cloudfoundry/credhub-cli/releases/download/${CREDHUB_VERSION}/credhub-linux-amd64-${CREDHUB_VERSION}.tgz" | tar -zx -C /usr/local/bin && \
-    curl -fL "https://github.com/vmware/govmomi/releases/download/v${GOVC_VERSION}/govc_Linux_x86_64.tar.gz" | tar -zx -C /usr/local/bin
+    curl -fL "https://github.com/vmware/govmomi/releases/download/v${GOVC_VERSION}/govc_Linux_x86_64.tar.gz" | tar -zx -C /usr/local/bin && \
+    curl -fL "https://dl.min.io/client/mc/release/linux-amd64/archive/mc.${MC_VERSION}" > /usr/local/bin/mc
 RUN chmod +x /usr/local/bin/*
 RUN ln /usr/bin/uuidgen /usr/local/bin/uuid
 RUN mkdir -p /root/.ssh
